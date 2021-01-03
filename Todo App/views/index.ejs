@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">ToDo App</a>
+      <a class="navbar-brand mx-3" href="/">ToDo App</a>
     </div>
 </nav>
 
@@ -18,11 +18,30 @@
         <% todo.forEach(todos => {%>
         <li class="list-group-item">
             <%= todos.todo %>
-            <a href="/delete/todo/<%= todos._id %>" class="btn btn-danger btn-sm">Delete</a>
+            <a data-id="<%= todos._id %>" onclick="deleteFunction(this)" class="btn btn-danger btn-sm" style="margin-left: 16px; float: right; padding-inline: 18px;">Delete</a>
+            <a data-id="<%= todos._id %>" data-todo="<%= todos.todo %>" onclick="getUpdateId(this)" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" style="float: right; padding-inline: 25px;">Edit</a>
         </li>
         <%}) %>
     </ul>
 
 </div>
 
-<% include("./partials/footer")%>
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-block: 0.75rem; border: none;">
+                <h5 class="modal-title" id="exampleModalLabel">Edit ToDo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="margin-top: 10px; padding-top: 0.75rem; padding-bottom: 2.25rem;">
+                <form id="edit_form" onsubmit="editFunction(this)" action="" class="d-flex">
+                    <input type="text" id="edit_field" name="todo" class="form-control" placeholder="Edit ToDo">
+                    <button type="submit" class="btn btn-primary mx-2" style="padding-inline: 30px;">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./partials/footer")%>
