@@ -17,6 +17,8 @@ app.set("view engine", "ejs");
 
 app.use(require('./routes/index'));
 app.use(require('./routes/todo'));
+app.use(require('./routes/register'));
+app.use(require('./routes/auth'));
 
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => {

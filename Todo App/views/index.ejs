@@ -1,8 +1,10 @@
 <%- include("./partials/header")%>
 
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand mx-3" href="/">ToDo App</a>
+      <div style="color:#fff"><%= user.firstName + " " + user.lastName %></div>
+      <a href="logout" id="logout" style="color:#fff; margin-right: 25px">Log out</a>
     </div>
 </nav>
 
@@ -13,15 +15,16 @@
         <input type="submit" value="Add ToDo" class="btn btn-md btn-primary mx-2">
     </form>
 
-
     <ul class="list-group my-5">
-        <% todo.forEach(todos => {%>
-        <li class="list-group-item">
-            <%= todos.todo %>
-            <a data-id="<%= todos._id %>" onclick="deleteFunction(this)" class="btn btn-danger btn-sm" style="margin-left: 16px; float: right; padding-inline: 18px;">Delete</a>
-            <a data-id="<%= todos._id %>" data-todo="<%= todos.todo %>" onclick="getUpdateId(this)" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" style="float: right; padding-inline: 25px;">Edit</a>
-        </li>
-        <%}) %>
+        <% if(typeof todo){ %>
+            <% todo.forEach(todos => { %>
+                <li class="list-group-item">
+                    <%= todos.todo %>
+                    <a data-id="<%= todos._id %>" onclick="deleteFunction(this)" class="btn btn-danger btn-sm" style="margin-left: 16px; float: right; padding-inline: 18px;">Delete</a>
+                    <a data-id="<%= todos._id %>" data-todo="<%= todos.todo %>" onclick="getUpdateId(this)" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" style="float: right; padding-inline: 25px;">Edit</a>
+                </li>
+            <%})%>
+        <%}%>
     </ul>
 
 </div>
