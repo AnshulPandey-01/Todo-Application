@@ -12,11 +12,11 @@ router.get("/home", requireLogin, async(req, res) => {
 
     newTodo.save().then(() => res.redirect("/home")).catch((err) => console.log(err));
 })
-.delete("/delete/todo/:_id", async(req, res) =>{
+.delete("/delete/todo/:_id", requireLogin, async(req, res) => {
     const {_id} = req.params;
     await Todo.deleteOne({_id}).then(() => res.json({redirect: "/home"})).catch((err) => console.log(err));
 })
-.put("/edit/todo/:_id", async(req, res) =>{
+.put("/edit/todo/:_id", requireLogin, async(req, res) => {
     const {_id} = req.params;
     let updatedTodo = {};
     if(req.body.todo) updatedTodo.todo = req.body.todo;
