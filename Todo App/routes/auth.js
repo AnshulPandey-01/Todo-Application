@@ -17,7 +17,7 @@ router.post('/login', (req, res) => {
             if(match){
                 const token = jwt.sign({_id : savedUser._id}, JWT_SECRET);
 
-                res.cookie("Brearer ", token, {
+                res.cookie("Brearer", token, {
                     httpOnly: true
                 }).redirect("/home");
             }else{
@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
     })
 })
 .get('/logout', (req, res) => {
-    res.clearCookie("Brearer ");
+    res.cookie("Brearer ", {expires: Date.now()});
     res.redirect("/");
 })
 
