@@ -1,7 +1,10 @@
-# ToDo App
+# <a href="https://todo-nodejs-project.herokuapp.com/">ToDo App</a>
 
-* ToDo application where user can add, update and delete their tasks.
+* A ToDo app deployed on Heroku.
+* The application allows users to add, update and delete their tasks.
 * The application has Sign-up and Log-in functionality and uses JWT and Cookies for authentication.
+
+<b>Project link</b>: <a href="https://todo-nodejs-project.herokuapp.com/">https://todo-nodejs-project.herokuapp.com</a>
 
 ## Technology Used
 * HTML
