@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/TODO_DB', {
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri, {
     useNewUrlParser: true, useUnifiedTopology: true
 }).then(() => {
     console.log('Connected to DB');
@@ -20,7 +22,7 @@ app.use(require('./routes/todo'));
 app.use(require('./routes/register'));
 app.use(require('./routes/auth'));
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`sever listening on port: ${PORT}`);
 });

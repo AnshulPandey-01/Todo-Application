@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
-const {JWT_SECRET} = require('../keys');
 const User = require("../models/User");
+
+const JWT_SECRET = process.env.JWT_KEY;
 
 module.exports = (req, res, next) => {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
