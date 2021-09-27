@@ -4,7 +4,7 @@
   "description": "Todo app using Node.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node server.js"
   },
   "author": "AnshulPandey-01",
   "license": "ISC",
@@ -13,7 +13,9 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.9",
+    "mongoose": "^5.11.9"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.6"
   }
 }
